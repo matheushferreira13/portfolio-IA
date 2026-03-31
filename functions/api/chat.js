@@ -313,8 +313,8 @@ export async function onRequestPost(context) {
 
     if (detail.includes('GEMINI_API_KEY_NAO_CONFIGURADA')) {
       return jsonResponse({
-        error: 'A chave GEMINI_API_KEY nao esta configurada no Cloudflare.',
-        fallback: 'Configure a variavel GEMINI_API_KEY em Settings > Environment variables do projeto Pages e faca um novo deploy.'
+        error: 'Assistente temporariamente indisponivel.',
+        fallback: 'No momento eu nao consegui responder. Tente novamente em instantes.'
       }, 503);
     }
 
