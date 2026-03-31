@@ -53,6 +53,11 @@ const copy = {
     messagePlaceholder: 'Descreva seu projeto ou dúvida...',
     submit: 'Enviar Mensagem',
     sent: 'Mensagem enviada! ✓',
+    sending: 'Enviando...',
+    contactSuccess: 'Mensagem enviada com sucesso. Obrigado pelo contato!',
+    contactInvalid: 'Preencha nome, email valido e mensagem com pelo menos 10 caracteres.',
+    contactError: 'Nao consegui enviar sua mensagem agora. Tente novamente em instantes.',
+    contactFallback: 'Se preferir, envie direto para o email: {email}.',
     footer: '&copy; 2026 Matheus. Feito com 💜 e IA.',
     typingStates: ['A analisar o contexto', 'A preparar a resposta', 'A validar informacoes'],
     quickNoLimit: 'O chat nao usa mais um limite local de chamadas. O uso agora depende apenas da disponibilidade do backend e da API.',
@@ -119,6 +124,11 @@ const copy = {
     messagePlaceholder: 'Describe your project or question...',
     submit: 'Send Message',
     sent: 'Message sent! ✓',
+    sending: 'Sending...',
+    contactSuccess: 'Message sent successfully. Thanks for reaching out!',
+    contactInvalid: 'Please provide name, valid email, and a message with at least 10 characters.',
+    contactError: 'I could not send your message right now. Please try again shortly.',
+    contactFallback: 'If you prefer, send it directly to: {email}.',
     footer: '&copy; 2026 Matheus. Built with 💜 and AI.',
     typingStates: ['Analyzing context', 'Preparing answer', 'Validating information'],
     quickNoLimit: 'The chat no longer uses a local call limit. Usage now depends only on backend and API availability.',
@@ -314,6 +324,7 @@ sections.forEach(s => sectionObserver.observe(s));
 
 /* ── AI Chat ────────────────────────────────────────────────── */
 const CHAT_API_ENDPOINT = '/api/chat';
+const CONTACT_API_ENDPOINT = '/api/contact';
 
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('input') || document.getElementById('chatInput');
@@ -622,17 +633,75 @@ document.addEventListener('keydown', (event) => {
 /* ── Contact form ───────────────────────────────────────────── */
 const form = document.getElementById('contactForm');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const btn = form.querySelector('.btn-primary');
-  btn.textContent = c().sent;
-  btn.style.background = '#16a34a';
-  setTimeout(() => {
-    btn.textContent = c().submit;
-    btn.style.background = '';
-    form.reset();
-  }, 3000);
-});
+function validateContactPayload(payload) {
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email);
+  return Boolean(payload.name && emailOk && payload.message && payload.message.length >= 10);
+}
+
+async function sendContactMessage(payload) {
+  const response = await fetch(CONTACT_API_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(data?.error || c().contactError);
+    error.status = response.status;
+    error.fallbackEmail = data?.fallbackEmail || '';
+    throw error;
+  }
+
+  return data;
+}
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btn = form.querySelector('.btn-primary');
+    const payload = {
+      name: String(form.name?.value || '').trim(),
+      email: String(form.email?.value || '').trim(),
+      message: String(form.message?.value || '').trim(),
+      language: currentLanguage
+    };
+
+    if (!validateContactPayload(payload)) {
+      btn.textContent = c().contactInvalid;
+      btn.style.background = '#dc2626';
+      setTimeout(() => {
+        btn.textContent = c().submit;
+        btn.style.background = '';
+      }, 2800);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = c().sending;
+
+    try {
+      await sendContactMessage(payload);
+      btn.textContent = c().contactSuccess;
+      btn.style.background = '#16a34a';
+      form.reset();
+    } catch (error) {
+      let message = c().contactError;
+      if (error.fallbackEmail) {
+        message = `${message} ${c().contactFallback.replace('{email}', error.fallbackEmail)}`;
+      }
+      btn.textContent = message;
+      btn.style.background = '#dc2626';
+    } finally {
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = c().submit;
+        btn.style.background = '';
+      }, 4500);
+    }
+  });
+}
 
 /* ── Scroll-reveal for cards ────────────────────────────────── */
 const revealCards = document.querySelectorAll('.skill-card, .project-card');

@@ -9,6 +9,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
+const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Portfolio <onboarding@resend.dev>';
 const GEMINI_ENDPOINTS = [
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent',
@@ -305,6 +308,95 @@ function buildFallback(question, context) {
 
   return `Estou com limite temporario da API agora, mas aqui vai um resumo com base no portfolio: ${lines.join(' | ')}`;
 }
+
+function isValidEmail(email = '') {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim());
+}
+
+function sanitizeLine(value = '') {
+  return String(value).replace(/[\r\n]+/g, ' ').trim();
+}
+
+async function sendContactEmail({ name, email, message, language }) {
+  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL) {
+    const error = new Error('EMAIL_NOT_CONFIGURED');
+    error.code = 'EMAIL_NOT_CONFIGURED';
+    throw error;
+  }
+
+  const subject = language === 'en'
+    ? `New portfolio message from ${sanitizeLine(name)}`
+    : `Nova mensagem do portfolio de ${sanitizeLine(name)}`;
+
+  const text = [
+    `Nome: ${sanitizeLine(name)}`,
+    `Email: ${sanitizeLine(email)}`,
+    '',
+    'Mensagem:',
+    String(message || '').trim()
+  ].join('\n');
+
+  const html = `
+    <h2>${language === 'en' ? 'New message from the portfolio' : 'Nova mensagem do portfolio'}</h2>
+    <p><strong>Nome:</strong> ${sanitizeLine(name)}</p>
+    <p><strong>Email:</strong> ${sanitizeLine(email)}</p>
+    <p><strong>Mensagem:</strong></p>
+    <p>${String(message || '').trim().replace(/\n/g, '<br>')}</p>
+  `;
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: CONTACT_FROM_EMAIL,
+      to: [CONTACT_TO_EMAIL],
+      reply_to: email,
+      subject,
+      text,
+      html
+    })
+  });
+
+  if (!response.ok) {
+    const details = await response.text().catch(() => '');
+    const error = new Error(`EMAIL_SEND_FAILED: ${details || response.status}`);
+    error.code = 'EMAIL_SEND_FAILED';
+    throw error;
+  }
+}
+
+app.post('/api/contact', async (req, res) => {
+  try {
+    const name = String(req.body?.name || '').trim();
+    const email = String(req.body?.email || '').trim();
+    const message = String(req.body?.message || '').trim();
+    const language = String(req.body?.language || 'pt').toLowerCase() === 'en' ? 'en' : 'pt';
+
+    if (!name || !isValidEmail(email) || message.length < 10) {
+      return res.status(400).json({ error: 'Dados invalidos no formulario.' });
+    }
+
+    await sendContactEmail({ name, email, message, language });
+    return res.json({ ok: true });
+  } catch (error) {
+    const code = String(error?.code || '');
+    if (code === 'EMAIL_NOT_CONFIGURED') {
+      return res.status(503).json({
+        error: 'Canal de email ainda nao configurado no servidor.',
+        fallbackEmail: CONTACT_TO_EMAIL || ''
+      });
+    }
+
+    console.error('Erro no envio de contato:', error);
+    return res.status(500).json({
+      error: 'Falha ao enviar mensagem de contato.',
+      fallbackEmail: CONTACT_TO_EMAIL || ''
+    });
+  }
+});
 
 app.post('/api/chat', async (req, res) => {
   try {
