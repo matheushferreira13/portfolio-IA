@@ -285,10 +285,13 @@ function buildFallback(question, context) {
 }
 
 export async function onRequestPost(context) {
+  let parsedBody = {};
+  let question = '';
+
   try {
-    const body = await context.request.json();
-    const question = String(body?.question || '').trim();
-    const history = Array.isArray(body?.history) ? body.history : [];
+    parsedBody = await context.request.json();
+    question = String(parsedBody?.question || '').trim();
+    const history = Array.isArray(parsedBody?.history) ? parsedBody.history : [];
     if (!question) {
       return jsonResponse({ error: 'Pergunta obrigatoria.' }, 400);
     }
@@ -296,7 +299,7 @@ export async function onRequestPost(context) {
     const apiKey = context.env.GEMINI_API_KEY;
     const knowledgeUrl = new URL('/assets/data/portfolio-knowledge.json', context.request.url);
     const knowledgeResponse = await fetch(knowledgeUrl.toString(), { cf: { cacheTtl: 300 } });
-    const knowledge = await knowledgeResponse.json();
+    const knowledge = knowledgeResponse.ok ? await knowledgeResponse.json() : {};
     const docs = buildKnowledgeDocs(knowledge);
     const contextText = retrieveContext(question, docs, 5);
     const factualGuide = [recruiterGuide(question, knowledge), portfolioGuide(question, knowledge)].filter(Boolean).join('\n');
@@ -307,17 +310,27 @@ export async function onRequestPost(context) {
     return jsonResponse({ answer, model: 'gemini-2.5-flash', provider: 'Google Gemini' });
   } catch (error) {
     const detail = String(error?.message || '');
+
+    if (detail.includes('GEMINI_API_KEY_NAO_CONFIGURADA')) {
+      return jsonResponse({
+        error: 'A chave GEMINI_API_KEY nao esta configurada no Cloudflare.',
+        fallback: 'Configure a variavel GEMINI_API_KEY em Settings > Environment variables do projeto Pages e faca um novo deploy.'
+      }, 503);
+    }
+
     try {
-      const body = await context.request.clone().json();
       const knowledgeUrl = new URL('/assets/data/portfolio-knowledge.json', context.request.url);
       const knowledgeResponse = await fetch(knowledgeUrl.toString(), { cf: { cacheTtl: 300 } });
-      const knowledge = await knowledgeResponse.json();
+      const knowledge = knowledgeResponse.ok ? await knowledgeResponse.json() : {};
       const docs = buildKnowledgeDocs(knowledge);
-      const contextText = retrieveContext(body?.question || '', docs, 5);
+      const questionForFallback = question || String(parsedBody?.question || '').trim();
+      const contextText = retrieveContext(questionForFallback, docs, 5);
+
       if (detail.includes('429')) {
-        return jsonResponse({ error: 'Limite temporario da API atingido.', fallback: buildFallback(body?.question || '', contextText) }, 429);
+        return jsonResponse({ error: 'Limite temporario da API atingido.', fallback: buildFallback(questionForFallback, contextText) }, 429);
       }
-      return jsonResponse({ error: 'Erro ao conectar com a IA no backend.', fallback: buildFallback(body?.question || '', contextText) }, 500);
+
+      return jsonResponse({ error: 'Erro ao conectar com a IA no backend.', fallback: buildFallback(questionForFallback, contextText) }, 500);
     } catch {
       return jsonResponse({ error: 'Erro ao conectar com a IA no backend.' }, detail.includes('429') ? 429 : 500);
     }
