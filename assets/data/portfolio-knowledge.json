@@ -1,0 +1,179 @@
+{
+  "profile": {
+    "name": "Matheus Henrique Da Silva Ferreira",
+    "headline": "Profissional em transicao para tecnologia com foco em desenvolvimento, testes e migracao para IA",
+    "summary": "Administrador com mais de 5 anos de experiencia em planeamento estrategico, gestao de recursos e operacoes. Atualmente em transicao para tecnologia, com foco em desenvolvimento e analise de dados, unindo HTML, CSS, SQL, Python, Power BI e Machine Learning com visao de negocio.",
+    "location": "Lavras/MG, Brasil",
+    "workPreferences": ["Remoto", "Hibrido", "Presencial"],
+    "targetRoles": ["Desenvolvedor", "Tester", "Transicao para area de IA"],
+    "languages": [
+      "Portugues nativo",
+      "Ingles iniciante (leitura, escrita e conversacao)"
+    ],
+    "links": {
+      "github": "https://github.com/matheushferreira13",
+      "linkedin": "https://www.linkedin.com/in/matheus-henrique-b0227615b/"
+    }
+  },
+  "skills": [
+    {
+      "name": "HTML",
+      "level": "Intermediario",
+      "evidence": "Uso frequente em projetos de front-end academicos e praticos como loja virtual e portfolio."
+    },
+    {
+      "name": "CSS",
+      "level": "Intermediario",
+      "evidence": "Estilizacao de interfaces, responsividade e componentes visuais em projetos como Operaflow e portfolio."
+    },
+    {
+      "name": "JavaScript",
+      "level": "Intermediario",
+      "evidence": "Aplicado em interatividade, formularios, integracoes com APIs e chat com Gemini no portfolio."
+    },
+    {
+      "name": "SQL",
+      "level": "Basico a intermediario",
+      "evidence": "Uso em analise de dados e fundamentos de banco de dados na formacao em ADS."
+    },
+    {
+      "name": "Python",
+      "level": "Basico",
+      "evidence": "Conhecimento em analise de dados e base para trilha de Machine Learning."
+    },
+    {
+      "name": "Power BI",
+      "level": "Basico a intermediario",
+      "evidence": "Aplicacao em analise e visualizacao de indicadores de desempenho."
+    },
+    {
+      "name": "Xano",
+      "level": "Basico a intermediario",
+      "evidence": "Uso de backend no-code para dados e integracoes em projetos de estudo."
+    },
+    {
+      "name": "n8n",
+      "level": "Basico a intermediario",
+      "evidence": "Automacoes e fluxos de integracao para reduzir tarefas repetitivas."
+    }
+  ],
+  "tools": ["VS Code", "GitHub"],
+  "databases": ["MySQL", "Xano"],
+  "apiIntegrations": [
+    "Consumo de APIs em projetos JavaScript (ex.: Pokedex)",
+    "Integracao da Gemini API no portfolio",
+    "Integracoes com servicos via automacoes"
+  ],
+  "automations": [
+    "Fluxos com n8n para integracao entre servicos",
+    "Automacao de respostas e contexto no chat do portfolio"
+  ],
+  "projects": [
+    {
+      "name": "Site ArteAfeto (E-commerce)",
+      "description": "E-commerce para confeitaria artesanal com catalogo, seletor de sabor/tamanho, carrinho funcional, envio de pedidos via WhatsApp e painel administrativo.",
+      "objective": "Criar uma experiencia completa de compra online com foco em clareza visual e conversao.",
+      "stack": ["HTML", "CSS", "JavaScript", "Cloudflare Workers", "Node.js (backend no repositorio)"],
+      "role": "Desenvolvimento de interface, integracao de funcionalidades e evolucao do projeto",
+      "impact": "Projeto mais desafiador e com maior resultado concreto, validando arquitetura front-end e fluxo de pedido ponta a ponta.",
+      "demo": "N/A",
+      "repo": "https://github.com/matheushferreira13/Site-arteafeto"
+    },
+    {
+      "name": "Portfolio com Assistente IA",
+      "description": "Portfolio profissional com chat integrado ao Gemini para responder recrutadores com contexto real de carreira e projetos.",
+      "objective": "Diferenciar apresentacao profissional com interacao em tempo real e dados factuais.",
+      "stack": ["HTML", "CSS", "JavaScript", "Gemini API"],
+      "role": "Implementacao da experiencia de portfolio e logica de IA conversacional",
+      "impact": "Eleva o portfolio para formato interativo e orientado a entrevistas.",
+      "demo": "N/A",
+      "repo": "https://github.com/matheushferreira13"
+    },
+    {
+      "name": "Operaflow",
+      "description": "Projeto web para gestao eficiente de frota e operacoes, com foco em organizacao de informacoes e usabilidade.",
+      "objective": "Estruturar um sistema visual para apoio a processos de gestao e controle operacional.",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "role": "Desenvolvimento da interface e evolucao iterativa do sistema",
+      "impact": "Consolidou pratica de UX, estrutura modular e manutencao incremental.",
+      "demo": "N/A",
+      "repo": "https://github.com/matheushferreira13/Operaflow"
+    },
+    {
+      "name": "HDCs Host",
+      "description": "Site criado para treinar HTML e CSS com estrutura limpa e objetiva, apresentando servicos de host e alternativas de conexao para o cliente.",
+      "objective": "Exercitar semantica, organizacao visual e responsividade em um site institucional focado em conversao inicial.",
+      "stack": ["HTML5", "CSS3", "Responsividade"],
+      "role": "Construcao da interface, estruturacao do conteudo e adaptacao para mobile, tablet e desktop.",
+      "impact": "Fortaleceu minha base de front-end e mostrou minha preocupacao em manter a mesma experiencia em diferentes dispositivos.",
+      "demo": "Video demonstrativo incorporado no portfolio",
+      "repo": "https://github.com/matheushferreira13/HDC-Host"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Analista de Suporte e Gestao (Logistica)",
+      "company": "Technolog",
+      "period": "Setembro/2024 - Atual",
+      "description": "Suporte tecnico, analise de desempenho de sistemas logísticos e de frota, validacao de dados, identificacao de falhas e melhoria de processos com relatorios e KPIs."
+    },
+    {
+      "title": "Agente de Negocios",
+      "company": "Banco Bradesco",
+      "period": "Agosto/2023 - Novembro/2023",
+      "description": "Atendimento ao cliente, analise de perfil e suporte em sistemas internos bancarios."
+    },
+    {
+      "title": "Estagiario de Agencia",
+      "company": "Banco Mercantil do Brasil",
+      "period": "Outubro/2022 - Agosto/2023",
+      "description": "Apoio administrativo e operacional com uso de sistemas bancarios e acompanhamento de requisicoes internas."
+    }
+  ],
+  "education": [
+    {
+      "course": "Analise e Desenvolvimento de Sistemas",
+      "institution": "UNILAVRAS",
+      "status": "3o periodo (de 4)",
+      "expectedCompletion": "Fevereiro/2027",
+      "focus": "JavaScript, CSS e HTML"
+    },
+    {
+      "course": "Administracao de Empresas",
+      "institution": "UNOPAR",
+      "status": "4o periodo (trancado)",
+      "focus": "Gestao, operacoes e visao de negocio"
+    }
+  ],
+  "coursesAndCertifications": {
+    "source": "https://www.linkedin.com/in/matheus-henrique-b0227615b/ e perfil README do GitHub",
+    "highlights": [
+      "CPA-10 - ANBIMA",
+      "Fundamentos de Economia e Financas - ANBIMA",
+      "Produtos de Renda Variavel, Renda Fixa e Derivativos",
+      "Analise de Dados e Power BI - Escola Conquer",
+      "SQL para Iniciantes - Escola Conquer"
+    ]
+  },
+  "businessProblems": [
+    "Resolver gargalos de usabilidade no front-end para reduzir friccao do utilizador",
+    "Transformar processos manuais em fluxos digitais mais claros e rastreaveis",
+    "Conectar visao de negocio com implementacao tecnica em interfaces web"
+  ],
+  "notableCases": {
+    "mostDifficultProject": "Site ArteAfeto (e-commerce)",
+    "mostConcreteResult": "Site ArteAfeto (e-commerce)",
+    "criticalProblemSolved": "Estruturacao de fluxo de pedido com variacoes de produto, carrinho e encaminhamento para WhatsApp com dados consistentes.",
+    "uxOrPerformanceImprovement": "Melhoria da navegacao e da organizacao visual nos projetos front-end para facilitar descoberta de informacao e acao do utilizador."
+  },
+  "differentials": [
+    "Experiencia previa de mais de 5 anos em planeamento e operacoes, trazendo visao de negocio para tecnologia.",
+    "Foco pratico em front-end com entrega de projetos reais e evolucao continua no GitHub.",
+    "Capacidade de transitar entre suporte, analise de dados e desenvolvimento para resolver problemas de ponta a ponta.",
+    "Interesse ativo em IA aplicada para criar experiencias e fluxos mais inteligentes."
+  ],
+  "careerGoals": {
+    "preferredCompanies": "A combinar",
+    "salaryRange": "A combinar"
+  }
+}

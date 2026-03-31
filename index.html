@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matheus | Portfólio</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="navbar">
+    <nav class="nav-links">
+      <a href="#about">Sobre</a>
+      <a href="#skills">Habilidades</a>
+      <a href="#projects">Projetos</a>
+      <a href="#chat">Chat IA</a>
+      <a href="#contact">Contato</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="langToggle" title="Idioma">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10A15.3 15.3 0 0 1 12 22a15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/>
+        </svg>
+      </button>
+      <button class="icon-btn" id="themeToggle" title="Tema">
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+        </svg>
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <span class="lang-badge">PT</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-content">
+      <div class="avatar-wrapper">
+        <div class="avatar-ring">
+          <img class="avatar-img" src="assets/profile.jpg" alt="Matheus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="avatar-placeholder" style="display:none">M</div>
+        </div>
+      </div>
+      <h1 class="hero-title">
+        Olá, eu sou<br />
+        <span class="highlight">Matheus</span>
+      </h1>
+      <p class="hero-subtitle">Portfólio de desenvolvedor</p>
+      <p class="hero-desc">Pergunte-me qualquer coisa sobre minhas habilidades, projetos e experiência</p>
+      <a href="#chat" class="btn-primary">Começar Conversa</a>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="section-header">
+      <h2>Tecnologias &amp; Habilidades</h2>
+      <p>Ferramentas que domino para criar experiências incríveis</p>
+    </div>
+    <div class="skills-grid">
+
+      <!-- Frontend -->
+      <div class="skill-card">
+        <div class="skill-icon skill-frontend">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <span>Frontend</span>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="skill-card">
+        <div class="skill-icon skill-js">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="2"/>
+            <path d="M7 17c0 1 .8 2 2 2s2-1 2-2v-6"/>
+            <path d="M13 13c0-1 .8-2 2-2s2 1 2 2v2c0 1-.8 2-2 2s-2-1-2-2"/>
+          </svg>
+        </div>
+        <span>JavaScript</span>
+      </div>
+
+      <!-- CSS -->
+      <div class="skill-card">
+        <div class="skill-icon skill-css">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 2l1.5 16.5L12 21l6.5-2.5L20 2Z"/>
+            <path d="M7.5 8h9l-.5 5-4 1.5L8 13"/>
+          </svg>
+        </div>
+        <span>CSS</span>
+      </div>
+
+      <!-- React -->
+      <div class="skill-card">
+        <div class="skill-icon skill-react">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="2"/>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/>
+            <path d="M2 12h20M12 2C8.7 6 7 9 7 12s1.7 6 5 10M12 2c3.3 4 5 7 5 10s-1.7 6-5 10"/>
+          </svg>
+        </div>
+        <span>React</span>
+      </div>
+
+      <!-- Node.js -->
+      <div class="skill-card">
+        <div class="skill-icon skill-node">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/>
+            <path d="M12 12v10M2 7l10 5 10-5"/>
+          </svg>
+        </div>
+        <span>Node.js</span>
+      </div>
+
+      <!-- Banco de Dados -->
+      <div class="skill-card">
+        <div class="skill-icon skill-db">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+        </div>
+        <span>Banco de Dados</span>
+      </div>
+
+      <!-- Soft Skills -->
+      <div class="skill-card">
+        <div class="skill-icon skill-soft">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <span>Soft Skills</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="section-header">
+      <h2>Projetos em Destaque</h2>
+      <p>Projetos reais e acadêmicos desenvolvidos durante minha formação</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- ArteAfeto -->
+      <div class="project-card">
+        <div class="project-carousel" data-carousel>
+          <div class="project-slides">
+            <img class="project-slide is-active" src="/assets/img/art1.webp" alt="ArteAfeto - Home" loading="lazy" />
+            <img class="project-slide" src="/assets/img/art2.webp" alt="ArteAfeto - Catalogo" loading="lazy" />
+            <img class="project-slide" src="/assets/img/art3.webp" alt="ArteAfeto - Carrinho" loading="lazy" />
+          </div>
+          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Imagem anterior">&#10094;</button>
+          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Proxima imagem">&#10095;</button>
+          <div class="carousel-dots" aria-label="Selecionar imagem"></div>
+        </div>
+        <div class="project-info">
+          <h3>ArteAfeto — E-commerce de Confeitaria</h3>
+          <p>Site completo para uma confeitaria artesanal em Lavras/MG. Inclui catálogo de produtos com seletor de sabores e tamanhos, carrinho funcional, integração com WhatsApp para envio de pedidos e painel administrativo. Imagens otimizadas em WebP e deploy via Cloudflare Workers.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Consumo de API</span>
+            <span class="tag">Cloudflare</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/matheushferreira13/Site-arteafeto" target="_blank" rel="noopener noreferrer" class="btn-outline">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operaflow -->
+      <div class="project-card">
+        <div class="project-carousel" data-carousel>
+          <div class="project-slides">
+            <img class="project-slide is-active" src="/assets/img/op1.webp" alt="Operaflow - Dashboard" loading="lazy" />
+            <img class="project-slide" src="/assets/img/op2.webp" alt="Operaflow - Servicos" loading="lazy" />
+            <img class="project-slide" src="/assets/img/op3.webp" alt="Operaflow - Pedidos" loading="lazy" />
+          </div>
+          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Imagem anterior">&#10094;</button>
+          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Proxima imagem">&#10095;</button>
+          <div class="carousel-dots" aria-label="Selecionar imagem"></div>
+        </div>
+        <div class="project-info">
+          <h3>Operaflow — Gestão de Serviços e Pedidos</h3>
+          <p>Aplicação web multi-página para controle de fluxo operacional, com telas dedicadas a serviços, pedidos e painel principal. Projeto em desenvolvimento contínuo, com foco em organização de interface e experiência do usuário.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/matheushferreira13/Operaflow" target="_blank" rel="noopener noreferrer" class="btn-outline">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HDCs Host -->
+      <div class="project-card">
+        <div class="project-carousel" data-carousel>
+          <div class="project-slides">
+            <video class="project-slide is-active" src="assets/video/hdcs-host.mp4" aria-label="HDCs Host - Apresentacao em video"
+              muted controls playsinline preload="metadata"></video>
+          </div>
+          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Midia anterior">&#10094;</button>
+          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Proxima midia">&#10095;</button>
+          <div class="carousel-dots" aria-label="Selecionar imagem"></div>
+        </div>
+        <div class="project-info">
+          <h3>HDCs Host</h3>
+          <p>Projeto desenvolvido para treinar HTML e CSS com uma estrutura limpa e objetiva, apresentando servicos de host para estabelecer um primeiro contacto com o cliente e suas alternativas de conexao. A responsividade foi trabalhada para garantir boa experiencia em mobile, tablet e desktop.</p>
+          <div class="project-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Responsivo</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/matheushferreira13/HDC-Host" target="_blank" rel="noopener noreferrer" class="btn-outline">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AI CHAT -->
+  <section class="chat-section" id="chat">
+    <div class="section-header">
+      <h2>Converse com meu <span>Assistente IA</span></h2>
+      <p>Pergunte qualquer coisa sobre minha experiência, projetos e habilidades</p>
+    </div>
+    <div class="chat-container">
+      <div class="chat-topbar">
+        <div class="chat-assistant-meta">
+          <div class="chat-avatar chat-avatar--profile">
+            <img src="assets/profile.jpg" alt="Foto de Matheus" loading="lazy" />
+          </div>
+          <div>
+            <strong>Matheus IA</strong>
+            <p>Assistente de portfólio. Responde com contexto real dos meus projetos.</p>
+          </div>
+        </div>
+        <span class="chat-status">Online</span>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg chat-msg--bot">
+          <div class="chat-avatar chat-avatar--profile">
+            <img src="assets/profile.jpg" alt="Foto de Matheus" loading="lazy" />
+          </div>
+          <div class="chat-bubble">
+            Olá! Sou o assistente virtual do Matheus. Posso te contar sobre seus projetos, habilidades e trajetória acadêmica. Como posso te ajudar? 👋
+          </div>
+        </div>
+      </div>
+      <div class="chat-suggestions">
+        <p class="chat-suggestions-hint">Atalhos de pergunta (opcional): você pode escrever qualquer pergunta no campo abaixo.</p>
+        <button class="chat-suggestion" onclick="sendSuggestion(this)">Quais projetos você tem?</button>
+        <button class="chat-suggestion" onclick="sendSuggestion(this)">Quais são suas habilidades?</button>
+        <button class="chat-suggestion" onclick="sendSuggestion(this)">Qual sua formação?</button>
+      </div>
+      <form class="chat-input-row" id="chatForm">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Escreva sua pergunta livremente (ex.: experiencia, tecnologias, disponibilidade)"
+          autocomplete="off"
+          aria-label="Mensagem para o assistente"
+        />
+        <button type="submit" class="chat-send-btn" aria-label="Enviar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <p class="chat-disclaimer">Este chat utiliza a engine Google Gemini no backend, atualmente priorizando o modelo Gemini 2.5 Flash para respostas contextualizadas e seguras.</p>
+  </section>
+
+  <div class="media-lightbox" id="mediaLightbox" aria-hidden="true">
+    <button class="media-lightbox-close" type="button" id="mediaLightboxClose" aria-label="Fechar visualização">&times;</button>
+    <div class="media-lightbox-content" id="mediaLightboxContent"></div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
+      <h2>Vamos Conversar?</h2>
+      <p>Entre em contato e vamos criar algo incrível juntos</p>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" placeholder="Seu nome" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="message" rows="5" placeholder="Descreva seu projeto ou dúvida..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Enviar Mensagem</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 Matheus. Feito com 💜 e IA.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
